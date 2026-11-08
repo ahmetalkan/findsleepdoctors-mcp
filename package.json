@@ -1,7 +1,7 @@
 {
   "name": "findsleepdoctors-mcp",
-  "version": "1.0.0",
-  "description": "MCP server for findsleepdoctors.com — search 21,000+ sleep doctors and sleep clinics in six countries by name, city, specialty or coordinates.",
+  "version": "1.0.1",
+  "description": "MCP server for findsleepdoctors.com \u2014 search 21,000+ sleep doctors and sleep clinics in six countries by name, city, specialty or coordinates.",
   "type": "module",
   "bin": {
     "findsleepdoctors-mcp": "./server.js"
