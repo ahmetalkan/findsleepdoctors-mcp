@@ -1,0 +1,35 @@
+{
+  "name": "findsleepdoctors-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for findsleepdoctors.com — search 21,000+ sleep doctors and sleep clinics in six countries by name, city, specialty or coordinates.",
+  "type": "module",
+  "bin": {
+    "findsleepdoctors-mcp": "./server.js"
+  },
+  "files": [
+    "server.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "sleep",
+    "sleep-apnea",
+    "sleep-doctor",
+    "directory"
+  ],
+  "homepage": "https://findsleepdoctors.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmetalkan/findsleepdoctors-mcp.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^3.25.76"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "author": "ahmetalkan",
+  "authorUrl": "https://github.com/ahmetalkan",
+  "description": "Search 21,000+ sleep doctors, sleep medicine specialists and sleep clinics in the US, UK, Canada, Australia, Ireland and New Zealand.",
+  "homepage": "https://findsleepdoctors.com",
+  "identifier": "ahmetalkan-findsleepdoctors-mcp",
+  "name": "Find Sleep Doctors",
+  "tags": [
+    "mcp",
+    "sleep",
+    "sleep-apnea",
+    "sleep-doctor",
+    "sleep-clinic",
+    "health",
+    "directory",
+    "findsleepdoctors"
+  ],
+  "tools": [
+    {
+      "name": "search_sleep_doctors",
+      "title": "Search sleep doctors and clinics",
+      "description": "Search the findsleepdoctors.com directory by free-text query, country, specialty, city or region. Returns profiles with address, phone, website and a link to the listing.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Free text: name, clinic, city or specialty"
+          },
+          "country": {
+            "type": "string",
+            "enum": [
+              "us",
+              "au",
+              "gb",
+              "ca",
+              "ie",
+              "nz"
+            ],
+            "description": "Two-letter country code"
+          },
+          "specialty": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. Sleep Medicine, Sleep Psychology"
+          },
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "description": "City name, e.g. Houston"
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Region or state code, e.g. tx, nsw"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 1
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 5
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "find_sleep_doctors_nearby",
+      "title": "Find sleep doctors near a location",
+      "description": "Find sleep doctors and sleep clinics within a radius of a latitude/longitude, sorted by distance. Use a geocoded location from the conversation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "radius_km": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 5
+          },
+          "specialty": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "get_sleep_doctor",
+      "title": "Get one sleep doctor or clinic",
+      "description": "Look up a single listing by its exact name or slug and return the full profile record and listing URL.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name_or_slug": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact listing name or slug, e.g. adelaide-insomnia-clinic"
+          }
+        },
+        "required": [
+          "name_or_slug"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "version": "1.0.0"
+}
